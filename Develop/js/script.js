@@ -18,32 +18,33 @@ console.log(currentHour);
 // display the current date
 $("#currentDay").text(currentDate.format("MMM DD, YYYY"));
 
-// making previous times go grey
 
-var timePast = function() {
-    for (var i = 9; i <= 17; i++){
+//if time is in past
+var timePast = function () {
+    for (i = 9; i <= 17; i++) {
         if (parseInt(currentHour) > i) {
-            $('#' + (i - 1) + "thHour").removeClass('present future').addClass('past');
-            $('#' + i + "thHour").addClass('past'). removeClass('present future');
+            $('#' + i + 'thHour').addClass("past");
         }
-    };
+    }
 };
 
-var timePresent = function() {
-    for (var i = 9; i <= 17; i++){
+//if current hour
+var timePresent = function () {
+    for (i = 9; i <= 17; i++) {
         if (parseInt(currentHour) == i) {
-            $('#' + (i - 1) + "thHour").removeClass('present future').addClass('past');
-            $('#' + i + "thHour").addClass('present').removeClass('past future');
+            $('#' + (i - 1) + 'thHour').removeClass('present future').addClass('past');
+            $('#' + i + 'thHour').addClass("present").removeClass('past future');
         }
-    };
+    }
 };
 
-var timeFuture = function() {
-    for (var i = 9; i <= 17; i++){
+//if time is in the future
+var timeFuture = function () {
+    for (i = 9; i <= 17; i++) {
         if (parseInt(currentHour) < i) {
-            $('#' + i + "thHour").addClass('future').removeClass('past present');
+            $('#' + i + 'thHour').addClass('future');
         }
-    };
+    }
 };
 
 setInterval(function(){
@@ -54,15 +55,24 @@ setInterval(function(){
 
 // saving to local storage
 
-$("button.saveBtn").click(() => {
+$('button.saveBtn').click(function () {
     var id = $(this).parent().children('textarea').attr('id');
-    localStorage.setItem("tasks", id);
-});
+    saveTask(id);
+})
 
+function saveTask(id) {
+    var inputValue = $('#' + id).val();
+    localStorage.setItem(id, inputValue);
+    displaySavedTasks();
+}
+
+function displaySavedTasks() {
 $(inputTasks).each(function(id) {
     $('#' + inputTasks[id]).val(localStorage.getItem(inputTasks[id]));
 });
+}
 
+displaySavedTasks();
 
 
 

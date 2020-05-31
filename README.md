@@ -9,12 +9,11 @@ This website will allow you to be able to schedule and organize your work day!
 * BootStrap
 
 ## Link to site
-(Work Day Scheduler)[https://brennenmcgill.github.io/Task-Day-Scheduler/]
+[Work Day Scheduler](https://brennenmcgill.github.io/Task-Day-Scheduler/)
 
 ## Images from the site
-(image 1)![]
-(image 2)![]
-(image 3)![]
-
+[image 1]()
+[image 2]()
+[image 3]()
 ## Made By
 BRENNEN MCGILL
